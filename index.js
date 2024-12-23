@@ -17,13 +17,18 @@ dotenv.config({
 const app = express();
 const server = http.createServer(app);
 
+const corsConfig = {
+  origin : ['http://localhost:5173'],
+  credentials: true,
+}
+
 const io = new Server(server, {
     cors: { origin: "http://localhost:5173", methods: ["GET", "POST"] },
   });
 
   // middleware
 
-//   app.use(cors());
+  app.use(cors(corsConfig));
   app.use(express.json());
   app.use(cookieParser());
   app.use('/uploads',express.static(path.join(__dirname, 'upload')));
