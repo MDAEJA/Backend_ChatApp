@@ -58,9 +58,6 @@ const userLogin = async(req,res)=>{
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
     // const isProduction = process.env.NODE_ENV === 'production';
-
-    localStorage.setItem('authToken', token);
-
      res.cookie('token',token,{
         maxAge: 2 * 24 * 60 * 60 * 1000, 
         httpOnly: true, 
