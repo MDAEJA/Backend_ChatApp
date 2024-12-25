@@ -61,8 +61,8 @@ const userLogin = async(req,res)=>{
         maxAge : 2 * 24 * 60 * 60 *1000,
         httpOnly: true, // Prevent access via JavaScript
         secure: true,  // Send only over HTTPS
-        sameSite: 'Lax', // Control cross-origin requests
-        
+        // sameSite: 'Lax', // Control cross-origin requests
+
         // httpOnly: true, // Prevent JavaScript access
         // sameSite: "strict",  
      }).json({
