@@ -57,7 +57,9 @@ const userLogin = async(req,res)=>{
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
-    const isProduction = process.env.NODE_ENV === 'production';
+    // const isProduction = process.env.NODE_ENV === 'production';
+
+    localStorage.setItem('authToken', token);
 
      res.cookie('token',token,{
         maxAge: 2 * 24 * 60 * 60 * 1000, 
@@ -78,7 +80,7 @@ const userLogin = async(req,res)=>{
 
 const userLogout = async(req,res)=>{
     try{
-        if(!req.cookies.token){
+        if(!req.cookies.token ){
        return res.status(404).json({
         status : false,
          message : "Already Logout !!"

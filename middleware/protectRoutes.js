@@ -8,7 +8,9 @@ dotenv.config({
 
 const protectRoutes = async(req,res,next)=>{
   try{
-   const token = req.cookies.token;
+   const token = req.cookies.token || localStorage.getItem('authToken'); // Get token from localStorage;
+   
+
    if(!token){
     return res.status(401).json({
         status: false,
