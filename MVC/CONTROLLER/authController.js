@@ -60,9 +60,10 @@ const userLogin = async(req,res)=>{
     // const isProduction = process.env.NODE_ENV === 'production';
      res.cookie('token',token,{
         maxAge: 2 * 24 * 60 * 60 * 1000, 
-        httpOnly: true, 
-        sameSite: "strict",
-        secure : true,
+        httpOnly: true,
+        secure : true, 
+        // sameSite: "strict",
+        
      }).json({
         status : true,
         token,
