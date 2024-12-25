@@ -61,14 +61,15 @@ const userLogin = async(req,res)=>{
     res.cookie('token', token, {
         maxAge: 2 * 24 * 60 * 60 * 1000,  // 2 days
         httpOnly: true,  // Prevent client-side access to the cookie
-        secure: true,  // Ensure the cookie is sent only over HTTPS
-        sameSite: "Strict",  // Restrict the cookie to same-site requests only
+        secure: true,  // Ensure the cookie is sent only over HTTPS (important for production)
+        sameSite: 'None',  // Allow cross-site requests
     }).json({
         status: true,
         token,
         user,
         message: 'Login Successfully !!!'
     });
+    
     
     }
     catch(err){
