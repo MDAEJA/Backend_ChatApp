@@ -59,8 +59,12 @@ const userLogin = async(req,res)=>{
 
      res.cookie('token',token,{
         maxAge : 2 * 24 * 60 * 60 *1000,
-        httpOnly: true, // Prevent JavaScript access
-        sameSite: "strict",  
+        httpOnly: true, // Prevent access via JavaScript
+        secure: true,  // Send only over HTTPS
+        sameSite: 'Lax', // Control cross-origin requests
+        
+        // httpOnly: true, // Prevent JavaScript access
+        // sameSite: "strict",  
      }).json({
         status : true,
         token,
