@@ -58,18 +58,18 @@ const userLogin = async(req,res)=>{
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
     // const isProduction = process.env.NODE_ENV === 'production';
-     res.cookie('token',token,{
-        maxAge: 2 * 24 * 60 * 60 * 1000, 
-        httpOnly: true,
-        secure : true, 
-        SameSite: "Strict",
-        
-     }).json({
-        status : true,
+    res.cookie('token', token, {
+        maxAge: 2 * 24 * 60 * 60 * 1000,  // 2 days
+        httpOnly: true,  // Prevent client-side access to the cookie
+        secure: true,  // Ensure the cookie is sent only over HTTPS
+        sameSite: "Strict",  // Restrict the cookie to same-site requests only
+    }).json({
+        status: true,
         token,
         user,
-        message : 'Login Successfully !!!'
-     })
+        message: 'Login Successfully !!!'
+    });
+    
     }
     catch(err){
         res.status(500).json({ err: "Something went wrong" });
