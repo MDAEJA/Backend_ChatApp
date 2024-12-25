@@ -62,7 +62,8 @@ const userLogin = async(req,res)=>{
      res.cookie('token',token,{
         maxAge: 2 * 24 * 60 * 60 * 1000, 
         httpOnly: true, 
-         sameSite: "strict",
+        sameSite: "strict",
+        secure : true,
      }).json({
         status : true,
         token,
