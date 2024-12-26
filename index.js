@@ -31,6 +31,7 @@ const io = new Server(server, {
   app.use(cors(corsConfig));
   app.use(express.json());
   app.use(cookieParser());
+  
   app.use('/uploads',express.static(path.join(__dirname, 'upload')));
 
 
@@ -54,9 +55,10 @@ io.on("connection", (socket) => {
 
     // api user routes
     app.use('/api/user',protectRoutes,userRoutes);
+    app.use('/api/user',userRoutes);
 
     // api chat 
-    app.use('/api/chat',protectRoutes,chatRoutes);
+    app.use('/api/chat',chatRoutes);
 
      dataBase();
     server.listen(process.env.PORT || 10000 ,()=>{

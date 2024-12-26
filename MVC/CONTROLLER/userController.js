@@ -3,7 +3,7 @@ const userModel = require("../MODEL/authModel");
 const addFriend = async(req,res)=>{
     try{
       const {friendId} = req.params;
-      const userId = req.user._id;
+      const {userId} = req.body;
 
     //   console.log(friendId,userId);
 

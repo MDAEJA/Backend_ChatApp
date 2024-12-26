@@ -13,7 +13,7 @@ dotenv.config({
 
 const sendMessage = async(req,res)=>{
     try{
-     const senderId = req.user._id;
+     const {senderId} = req.body;
      const {recieverId} = req.params;
      const {chatMessage} = req.body;
 
@@ -93,7 +93,7 @@ const sendMessage = async(req,res)=>{
 
 const messageBetweenUsers = async(req,res)=>{
     try{
-    const senderId = req.user._id;
+    const {senderId} = req.body;
     const {recieverId} = req.params;
 
     if (!senderId || !recieverId ) {
